@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(python -c \"import openai, httpx; print('openai', openai.__version__); print('httpx', httpx.__version__)\")",
+      "Shell(pip:*)",
+      "Shell(python -c \"import requests, json; r=requests.post('http://127.0.0.1:8000/api/chat/', json={'message':'hello'}, timeout=120); print('STATUS', r.status_code); print(r.text[:2000])\")",
+      "Shell(python -c \"import requests; r=requests.post('http://127.0.0.1:8000/api/chat/', json={'message':'hello'}, timeout=120); t=r.text; i=t.find('LLMError'); print(t[i:i+1500])\")",
+      "Shell(python -c \"import requests; r=requests.post('http://127.0.0.1:8000/api/chat/', json={'message':'hello'}, timeout=120); t=r.text; i=t.find('exception_value'); print(t[i:i+2000])\")",
+      "Shell(python -c \"import requests, json; r=requests.post('http://127.0.0.1:8000/api/chat/', json={'message':'Hi, how can you help me?'}, timeout=120); print('STATUS', r.status_code); print(r.text[:1500])\")",
+      "Shell(python -c \"import requests; r=requests.post('http://127.0.0.1:8000/api/chat/', json={'message':'Hi'}, timeout=120); t=r.text; i=t.find('exception_value'); print(t[i:i+1200])\")",
+      "Shell(python -c \"import requests; r=requests.post('http://127.0.0.1:8000/api/chat/', json={'message':'Hi'}, timeout=120); t=r.text; i=t.find('<pre class=\\\"exception_value\\\">'); print(t[i:i+800])\")",
+      "Shell(python -c \"from dotenv import load_dotenv; import os; load_dotenv(); print('PROVIDER', os.getenv('LLM_PROVIDER')); print('KEY_SET', bool(os.getenv('GEMINI_API_KEY'))); print('MODEL', os.getenv('GEMINI_MODEL'))\")",
+      "Shell(python -c \"import requests; r=requests.post('http://127.0.0.1:8000/api/chat/', json={'message':'Hi'}, timeout=120); t=r.text; i=t.find('<pre class=\\\"exception_value\\\">'); print(t[i:i+900])\")",
+      "Shell(git check-ignore -v node_modules .commandcode 2>&1; echo \"---TRACKED CHECK---\"; git ls-files node_modules | head -5; echo \"exit\")"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}

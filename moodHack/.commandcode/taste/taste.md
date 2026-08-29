@@ -1,0 +1,3 @@
+- Reports errors by pasting raw server logs / tracebacks (e.g., Django dev server output) rather than prose descriptions. Confidence: 0.7
+- Prefers free-tier LLM API providers (e.g., Gemini or GPT free tiers) over paid providers to avoid API costs. Confidence: 0.6
+- Prefers to run shell commands themselves in their own terminal rather than having the agent execute them; wants exact commands handed over when something needs doing. Confidence: 0.8
